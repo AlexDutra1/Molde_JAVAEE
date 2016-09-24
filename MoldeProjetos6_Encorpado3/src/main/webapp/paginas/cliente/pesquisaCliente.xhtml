@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+	<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+		<!-- FORM NECESSARIO -->
+		<h:form id="formPesquisaCliente">
+
+			<!-- PAINEL GERAL -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 style="font-family: Impact; font-weight: bold">Pesquisa de Clientes</h3>
+				</div>
+			<div class="panel-body">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Filtrar</h4>
+				</div>
+			<div class="panel-body">
+			
+			
+			<!-- PESQUISA POR NOME -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Nome"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				id="input_nome"
+				value="#{clienteController.formulario.cliente.nome}"></p:inputText>
+			</div>
+			
+			<!-- TESTE - Dentro do commandButton
+			<f:ajax execute="@form" render="@form" />
+			-->
+			 
+			<!-- PESQUISA POR EMAIL -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Email"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				id="input_email"
+				value="#{clienteController.formulario.cliente.email}"></p:inputText>
+			</div>
+			
+			<!-- PESQUISA POR DATA DE NASCIMENTO -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Data de Nascimento"></p:outputLabel>
+			</div>
+			
+			<div class="col-md-11 form-group">
+				<p:calendar 
+				id="input_data_nascimento"
+				value="#{clienteController.formulario.cliente.dataNascimento}"></p:calendar>
+			</div>
+			
+			<!-- PESQUISA POR GENERO -->
+			
+			<div class="col-md-10 form-group">
+				<h:outputLabel value="Género" />
+				<h:selectOneRadio value="#{clienteController.formulario.enumGenero}">
+				   	<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
+				   	<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
+				</h:selectOneRadio>
+			</div>
+
+			<!-- PESQUISA POR RENDA MENSAL -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Renda Mensal"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				id="input_renda_mensal"
+				value="#{clienteController.formulario.cliente.rendaMensal}"></p:inputText>
+			</div>
+
+			<!-- PESQUISA POR LAGRADOURO -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Endereço - Lagradouro"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				id="input_lagradouro"
+				value="#{clienteController.formulario.endereco.lagradouro}"></p:inputText>
+			</div>
+			
+			<!-- 	
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Endereço - Estado"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				id="input_estado"
+				></p:inputText>
+			</div>
+		 	-->	
+		 	
+		 	<!-- PESQUISA POR ESTADO -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Endereço - Estado"></p:outputLabel>
+				<h:selectOneMenu id="estado" styleClass="form-control"
+						value="#{clienteController.formulario.estadoSelecionado}" 
+						converter="SimpleEntityConverter">
+						   <f:selectItem itemValue="" itemLabel="Selecione" />
+						   <f:selectItems value="#{clienteController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
+				</h:selectOneMenu>
+			</div>
+		 	
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Endereço - Municipio"></p:outputLabel>
+				<h:selectOneMenu id="municipio_combo" styleClass="form-control"
+				value="#{clienteController.formulario.municipioSelecionado}" 
+				converter="SimpleEntityConverter">
+				   <f:selectItem itemValue="" itemLabel="Selecione" />
+				   <f:selectItems id="municipiosL" value="#{clienteController.formulario.todosMunicipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
+				</h:selectOneMenu>
+			</div>
+			
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Telefone - Número"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				id="input_telefone"
+				value="#{clienteController.formulario.telefone.numero}">
+				</p:inputText>
+			</div>
+			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisar}"></p:commandButton>
+			</div>
+			
+			</div><!-- FINAL DO CORPO DO PAINEL -->
+			</div><!-- FINAL DO PAINEL -->
+
+			<!-- TABELA -->
+				<p:dataTable value="#{clienteController.formulario.todosClientes}"
+					var="cliente" id="tabelaClientes">
+
+					<p:column headerText="NOME" style="text-align: center;">
+						<h:outputText value="#{cliente.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="EMAIL" style="text-align: center;">
+						<h:outputText value="#{cliente.email}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="DATA DE NASCIMENTO" style="text-align: center;">
+						<h:outputText value="#{cliente.dataNascimento}">
+							<f:convertDateTime dateStyle="medium" locale="pt_BR"></f:convertDateTime>
+						</h:outputText>
+					</p:column>
+					
+					<p:column headerText="GÉNERO" style="text-align: center;">
+						<h:outputText value="#{cliente.genero}"></h:outputText>
+					</p:column>
+					
+					<!-- O style adiciona alinha o conteudo da celula no centro -->
+					<p:column headerText="RENDA MENSAL" style="text-align: center;">
+						<h:outputText value="#{cliente.rendaMensal}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="END.Lagradouro" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.lagradouro}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="END.Estado" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.estado.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="END.Cidade" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.municipio.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="AÇÕES" style="text-align: center;">
+						<p:commandLink action="#{clienteController.preparaEdicao(cliente)}" ajax="false" title="Editar" styleClass="img-link">
+								<p:graphicImage
+								value="/resources/img/editar.png" width="25%" height="25%"/>
+						</p:commandLink>
+						
+						<p:commandLink action="#{clienteController.excluirRegistro(cliente)}" ajax="false" title="Excluir" styleClass="img-link">
+								<p:graphicImage 
+								value="/resources/img/excluir.png" width="28%" height="28%"/>
+						</p:commandLink>
+						
+						<p:commandLink action="#{clienteController.visualizaTelefones(cliente)}" ajax="false" title="Visualizar números" styleClass="img-link">
+								<p:graphicImage
+								value="/resources/img/telefone.jpg" width="18%" height="18%" />
+						</p:commandLink>
+						
+						<p:commandLink action="#{clienteController.visualizaInteresses(cliente)}" ajax="false" title="Visualizar interesses" styleClass="img-link">
+								<p:graphicImage 
+								value="/resources/img/interesse.jpg" width="25%" height="25%"/>
+						</p:commandLink>
+						
+					</p:column>
+					
+		
+				</p:dataTable>
+				
+				
+			</div> <!-- FINAL DO CORPO DO PAINEL -->
+		</div><!-- FINAL DO PAINEL GERAL -->
+
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

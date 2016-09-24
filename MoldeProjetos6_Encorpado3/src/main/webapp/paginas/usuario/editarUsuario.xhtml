@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+	<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+		<!-- UPLOAD DE ARQUIVOS TESTE <h:form enctype="multipart/form-data">-->
+
+		<h:form id="formEditarUsuario" enctype="multipart/form-data">
+
+			<!-- Teste do painel bootstrap -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Edição de Usuários</h3>
+				</div>
+
+				<div class="panel-body">
+
+					<div class="row">
+
+						<div class="col-md-10 form-group">
+							<p:outputLabel value="Nome: "></p:outputLabel>
+							<p:inputText styleClass="form-control"
+								value="#{usuarioController.formulario.usuario.nome}"></p:inputText>
+						</div>
+
+						<div class="col-md-9 form-group">
+							<p:outputLabel value="Email: "></p:outputLabel>
+							<p:inputText styleClass="form-control"
+								value="#{usuarioController.formulario.usuario.email}"></p:inputText>
+						</div>
+
+						<div class="col-md-10 form-group">
+							<p:outputLabel value="Login: "></p:outputLabel>
+							<p:inputText styleClass="form-control"
+								value="#{usuarioController.formulario.usuario.usuario}"></p:inputText>
+						</div>
+
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Senha: "></p:outputLabel>
+							<p:inputText styleClass="form-control"
+								value="#{usuarioController.formulario.usuario.senha}"></p:inputText>
+						</div>
+
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Repetir senha: "></p:outputLabel>
+							<p:inputText styleClass="form-control"
+								value="#{usuarioController.formulario.usuario.senha}"></p:inputText>
+						</div>
+
+						<div class="col-md-12 form-group">
+							
+							
+
+
+						</div>
+
+						<div class="col-md-12 form-group">
+							<p:outputLabel value="Foto do Usuário: "></p:outputLabel>
+							<div class="row">
+								<div class="col-md-12 form-group">
+									<!-- 	<p:button action="#{usuarioController.salvar()}" value="Gravar Imagem"></p:button> -->
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-md-12 form-group">
+							<p:commandButton value="Alterar" update="formEditarUsuario"
+								actionListener="#{usuarioController.salvarCadastro}" />
+						</div>
+
+
+
+
+
+
+					</div>
+					<!-- FINAL DA ROW -->
+				</div>
+				<!-- FINAL DO CORPO DO PAINEL -->
+			</div>
+			<!-- FINAL DO PAINEL -->
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	
+	<ui:define name="corpo">
+	
+	<h:form id="formPesquisaUsuario">
+
+<!-- Teste do painel bootstrap -->
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3>Pesquisa de Usuários</h3></div>
+		
+		<div class="panel-body">
+		
+		<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Filtrar</h4>
+				</div>
+			<div class="panel-body">
+		
+				<div class="row">
+
+					<div class="col-md-10 form-group">
+						<p:outputLabel value="Nome"/>
+						<p:inputText id="input_nome" styleClass="form-control"
+						value="#{usuarioController.formulario.usuario.nome}" ></p:inputText>
+					</div>
+					
+					<div class="col-md-10 form-group">
+						<p:outputLabel value="Login"/>
+						<p:inputText id="input_usuario" styleClass="form-control"
+						value="#{usuarioController.formulario.usuario.usuario}"></p:inputText>
+					</div>
+					 
+					<div class="col-md-10 form-group">
+						<p:outputLabel value="Email"/>
+						<p:inputText id="input_email" styleClass="form-control"
+						value="#{usuarioController.formulario.usuario.email}"></p:inputText>
+					</div>
+				
+					<div class="col-md-10 form-group">
+						
+						<p:commandButton value="Pesquisar"
+						action="#{usuarioController.pesquisar}">
+						</p:commandButton>
+					
+					</div>
+					
+					</div> <!-- FINAL DA ROW -->
+				</div> <!-- FIM DO CORPO DO PAINEL -->
+			</div> <!-- FIM DO PAINEL -->
+
+			<div class="row">
+					
+				<!-- TABELA -->
+				<div class="col-md-12 form-group">
+				
+				<p:dataTable value="#{usuarioController.formulario.todosUsuarios}"
+				var="usuario" 
+				id="tabelaConsultaUsuarios">
+						
+					<p:column headerText="NOME" style="text-align: center;">
+						<h:outputText value="#{usuario.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="LOGIN" style="text-align: center;">
+						<h:outputText value="#{usuario.usuario}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="EMAIL" style="text-align: center;">
+						<h:outputText value="#{usuario.email}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="AÇÕES" style="text-align: center;">
+						<p:commandLink action="#{usuarioController.preparaEdicao(usuario)}" ajax="false" title="Editar" styleClass="img-link">
+								<p:graphicImage
+								value="/resources/img/editar.png" width="08%" height="08%"/>
+						</p:commandLink>
+						
+						<p:commandLink action="#{usuarioController.excluirRegistro(usuario)}" ajax="false" title="Excluir" styleClass="img-link">
+								<p:graphicImage 
+								value="/resources/img/excluir.png" width="08%" height="08%"/>
+						</p:commandLink>
+						
+						<p:commandLink action="#{usuarioController.visualizar(usuario)}" ajax="false" title="Visualizar" styleClass="img-link">
+								<p:graphicImage 
+								value="/resources/img/visualizar.jpg" width="08%" height="08%"/>
+						</p:commandLink>
+						
+						
+					</p:column>
+						
+				</p:dataTable>
+						
+				</div>
+					
+			</div><!-- FINAL DA ROW -->
+			
+				
+		</div> <!-- FINAL DO CORPO DO PAINEL -->
+	</div> <!-- FINAL DO PAINEL -->
+	
+	</h:form>
+	</ui:define>
+</ui:composition>
+</html>

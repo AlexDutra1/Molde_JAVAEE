@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:andii="http://componentes.customizados.com"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+	<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+		<!-- FORM NECESSARIO -->
+		<h:form id="formPesquisaEndereco">
+
+			<!--PAINEL GERAL -->
+			<andii:compPanel>
+
+				<ui:define name="tituloDoPainel"><h3>Pesquisa de Endereço</h3></ui:define>
+				
+				<ui:define name="corpoDoPainel">
+
+			
+			<!--PAINEL DE CONSULTAS -->
+			<andii:compPanel>
+
+				<ui:define name="tituloDoPainel"><h3>Filtrar</h3></ui:define>
+				
+				<ui:define name="corpoDoPainel">
+
+				<!-- PRIMEIRA LINHA -->
+				<div class="row">
+					<div class="col-md-8 form-group">
+						<p:outputLabel value="Lagradouro"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+						value="#{enderecoController.formulario.endereco.lagradouro}"></p:inputText>
+					</div>
+				</div>
+				
+				<!-- SEGUNDA LINHA -->
+				<div class="row">
+					<div class="col-md-2 form-group">
+								<p:outputLabel value="Quadra"></p:outputLabel>
+								<p:inputText styleClass="form-control"
+								value="#{enderecoController.formulario.endereco.quadra}"></p:inputText>
+					</div>
+					
+					<div class="col-md-2 form-group">
+							<p:outputLabel value="Lote "></p:outputLabel>
+							<p:inputText styleClass="form-control"
+							value="#{enderecoController.formulario.endereco.lote}"></p:inputText>
+					</div>
+					
+					<div class="col-md-2 form-group">
+							<p:outputLabel value="Número "></p:outputLabel>
+							<p:inputText styleClass="form-control"
+							value="#{enderecoController.formulario.endereco.numero}"></p:inputText>
+					</div>
+					
+				</div>
+				
+				<!-- TERCEIRA LINHA -->
+				<div class="row">
+					<div class="col-md-8 form-group">
+							<p:outputLabel value="Bairro "></p:outputLabel>
+							<p:inputText styleClass="form-control"
+							value="#{enderecoController.formulario.endereco.bairro}"></p:inputText>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-4 form-group">
+								<p:outputLabel value="CEP "></p:outputLabel>
+								<p:inputText styleClass="form-control"
+								value="#{enderecoController.formulario.endereco.cep}"></p:inputText>
+					</div>
+				</div>
+				
+				<!-- QUARTA LINHA -->
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<h:outputLabel value="Estado" for="estado" />
+							<h:selectOneMenu id="estado" styleClass="form-control"
+							value="#{enderecoController.formulario.estadoSelecionado}"
+							converter="SimpleEntityConverter">
+							   <f:selectItem itemValue="" itemLabel="Selecione" />
+							   <f:selectItems value="#{enderecoController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
+							</h:selectOneMenu>	
+					</div>
+					
+					<div class="col-md-4 form-group">
+						<h:outputLabel value="Municipio" for="municipio_combo_endereco" />
+							<h:selectOneMenu id="municipio_combo_endereco" styleClass="form-control"
+							value="#{enderecoController.formulario.municipioSelecionado}"
+							converter="SimpleEntityConverter">
+							   <f:selectItem itemValue="" itemLabel="Selecione" />
+							   <f:selectItems value="#{enderecoController.formulario.todosMunicipios}"
+							   var="municipio" 
+							   itemValue="#{municipio}"
+							   itemLabel="#{municipio.nome}"></f:selectItems>
+							</h:selectOneMenu>	
+					</div>
+				</div>
+				
+				<!-- QUINTA LINHA -->
+				<div class="row">
+					<div class="col-md-10 form-group">
+							<p:commandButton value="Pesquisar"
+							action="#{enderecoController.pesquisar}"></p:commandButton>
+					</div>
+				</div>
+				
+				
+				</ui:define> <!-- FINAL DO CORPO DO PAINEL -->
+			</andii:compPanel> <!-- FINAL DO PAINEL -->
+			
+				<!-- TABELA -->
+				<!-- SEXTA LINHA -->
+				<div class="row">
+					<div class="col-md-12 form-group">
+						<p:dataTable value="#{enderecoController.formulario.todosEnderecos}"
+						var="endereco" id="tabelaEnderecos">
+						
+					<p:column headerText="LAGRADOURO" style="text-align: center;">
+						<h:outputText value="#{endereco.lagradouro}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="QUADRA" style="text-align: center;">
+						<h:outputText value="#{endereco.quadra}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="LOTE" style="text-align: center;">
+						<h:outputText value="#{endereco.lote}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="NÚMERO" style="text-align: center;">
+						<h:outputText value="#{endereco.numero}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="CEP" style="text-align: center;">
+						<h:outputText value="#{endereco.cep}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="BAIRRO" style="text-align: center;">
+						<h:outputText value="#{endereco.bairro}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="ESTADO" style="text-align: center;">
+						<h:outputText value="#{endereco.estado.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="MUNICIPIO" style="text-align: center;">
+						<h:outputText value="#{endereco.municipio.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="AÇÕES" style="text-align: center;">
+						<p:commandLink action="#{municipioController.preparaEdicao(municipio)}" ajax="false" title="Editar" styleClass="img-link">
+								<p:graphicImage
+								value="/resources/img/editar.png" width="08%" height="30%"/>
+						</p:commandLink>
+						
+						<p:commandLink action="#{municipioController.excluirRegistro(municipio)}" ajax="false" title="Excluir" styleClass="img-link">
+								<p:graphicImage 
+								value="/resources/img/excluir.png" width="08%" height="30%"/>
+						</p:commandLink>
+					</p:column>
+						
+						</p:dataTable>
+					</div>
+				</div>
+				
+				</ui:define>
+				</andii:compPanel>
+			</h:form>	
+</ui:define>
+</ui:composition>
+</html>

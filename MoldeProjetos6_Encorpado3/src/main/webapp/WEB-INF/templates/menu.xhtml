@@ -1,0 +1,102 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+<div class="panel panel-default" >
+		
+		<div class="panel-body">
+		
+<h:form id="menuForm">
+
+
+		<nav class="navbar navbar-custom" 
+		style="margin: 10px 0">
+			<div class="container-fluid">
+				<div class="navbar-header">
+			    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        	<span class="btn sr-only">Toggle navigation</span>
+				        <span class="btn icon-bar"></span>
+				        <span class="btn icon-bar"></span>
+				        <span class="btn icon-bar"></span>
+			      	</button>
+			    </div>
+			    
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+			      	<ul class="nav navbar-nav" style="color: black;">
+			      	
+			      		<li class="dropdown" style="">
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			style="color: white; background-color: #28166F; border-radius: 10px; margin: 4%;"
+			      			aria-haspopup="true" aria-expanded="false">Clientes<span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink action="#{clienteController.abreIncluir}" value="Cadastrar Cliente" /></li>
+			            		<li><h:commandLink action="#{clienteController.abrePesquisa}" value="Pesquisar Cliente" /></li>
+			          		</ul>
+			      		</li>
+			      		
+			      		<li class="dropdown" style="">
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			style="color: white; background-color: #28166F; border-radius: 10px; margin: 4%;"
+			      			aria-haspopup="true" aria-expanded="false">Usuários<span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink action="cadastroUsuario" value="Cadastrar Usuários" /></li>
+			            		<li><h:commandLink action="pesquisaUsuario" value="Pesquisar Usuários" /></li>
+			          		</ul>
+			      		</li>
+			      		
+			      		<li class="dropdown" style="">
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			style="color: white; background-color: #28166F; border-radius: 10px; margin: 4%;"
+			      			aria-haspopup="true" aria-expanded="false">Endereço<span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink action="cadastroEndereco" value="Cadastrar Endereco" /></li>
+			            		<li><h:commandLink action="pesquisaEndereco" value="Pesquisar Endereco" /></li>
+			          		</ul>
+			      		</li>
+			      		
+			      		<li class="dropdown" style="">
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			style="color: white; background-color: #28166F; border-radius: 10px; margin: 4%;"
+			      			aria-haspopup="true" aria-expanded="false">Estado <span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink action="cadastroEstado" value="Cadastrar Estado" /></li>
+			            		<li><h:commandLink action="pesquisaEstado" value="Pesquisar Estado" /></li>
+			          		</ul>
+			      		</li>
+			      		
+			      		<li class="dropdown" style="">
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			style="color: white; background-color: #28166F; border-radius: 10px; margin: 4%;"
+			      			aria-haspopup="true" aria-expanded="false">Municipio<span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink action="cadastroMunicipio" value="Cadastrar Cidade" /></li>
+			            		<li><h:commandLink action="pesquisaMunicipio" value="Pesquisar Municipio" /></li>
+			          		</ul>
+			      		</li>
+			      		
+			      		<li class="dropdown" style="position:absolute;left:90%; ">
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			style="color: white; background-color: #28166F; border-radius: 10px; margin:	4%;"
+			      			aria-haspopup="true" aria-expanded="false">Conta<span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink value="Editar Conta" action="login" /></li>
+			            		<li><h:commandLink value="Trocar de conta" action="trocarlogin"/></li>
+			            		<li><h:commandLink value="Logout" /></li>
+			          		</ul>
+			      		</li>
+			      	</ul>
+				</div>
+			</div><!-- FIM DO CONTAINER-FLUID -->
+		</nav>
+		
+		
+		
+    </h:form>
+    </div><!-- FINAL DO CORPO DO PAINEL -->
+</div><!-- FINAL DO PAINEL -->
+</h:body>	
+	
+</ui:component>

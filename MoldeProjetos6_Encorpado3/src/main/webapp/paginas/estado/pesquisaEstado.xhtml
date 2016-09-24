@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:andii="http://componentes.customizados.com"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+	<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+		<!-- FORM NECESSARIO -->
+		<h:form id="formPesquisaEstado">
+
+
+			<!--PAINEL GERAL -->
+			<andii:compPanel>
+
+				<ui:define name="tituloDoPainel">
+					<h3>Pesquisa do Estado</h3>
+				</ui:define>
+
+				<ui:define name="corpoDoPainel">
+
+				<div class="col-md-12 form-group">
+					<p:outputLabel value="Nome do Estado"></p:outputLabel>
+					<br></br>
+					<p:inputText styleClass="form-control"
+						value="#{estadoController.formulario.estado.nome}"></p:inputText>
+					<br></br>
+				</div>
+
+				<div class="col-md-12 form-group">
+					<p:outputLabel value="Sigla do Estado"></p:outputLabel>
+					<br></br>
+					<p:inputText styleClass="form-control" id="inputSigla"
+						value="#{estadoController.formulario.estado.sigla}"></p:inputText>
+				</div>
+				
+				<div class="col-md-12 form-group">
+					<p:commandButton update="formPesquisaEstado"  value="Pesquisar" actionListener="#{estadoController.pesquisar}"/>
+				</div>
+				
+				
+				<!-- TABELA -->
+				<!-- OUTRA LINHA -->
+				<div class="row">
+					<div class="col-md-12 form-group">
+						<p:dataTable value="#{estadoController.formulario.todosEstados}"
+						var="estado" id="tabelaEstados">
+						
+					<p:column headerText="ESTADO" style="text-align: center;">
+						<h:outputText value="#{estado.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="SIGLA" style="text-align: center;">
+						<h:outputText value="#{estado.sigla}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="AÇÕES" style="text-align: center;">
+						<p:commandLink action="#{estadoController.preparaEdicao(estado)}" ajax="false" title="Editar" styleClass="img-link">
+								<p:graphicImage
+								value="/resources/img/editar.png" width="08%" height="08%"/>
+						</p:commandLink>
+						
+						<p:commandLink action="#{estadoController.excluir(estado)}" ajax="false" title="Excluir" styleClass="img-link">
+								<p:graphicImage 
+								value="/resources/img/excluir.png" width="08%" height="08%"/>
+						</p:commandLink>
+						
+						<p:commandLink action="#{estadoController.visualizar(estado)}" ajax="false" title="Visualizar" styleClass="img-link">
+								<p:graphicImage 
+								value="/resources/img/visualizar.jpg" width="08%" height="08%"/>
+						</p:commandLink>
+						
+					</p:column>
+						
+						</p:dataTable>
+					</div>
+				</div>
+				
+				
+			
+				</ui:define>
+				<!-- FIM DO CORPO DO PAINEL GERAL -->
+			</andii:compPanel>
+			<!-- FIM DO PAINEL GERAL-->
+
+		</h:form>
+
+	</ui:define>
+	<!-- FIM DO CORPO DA PAGINA -->
+</ui:composition>
+</html>

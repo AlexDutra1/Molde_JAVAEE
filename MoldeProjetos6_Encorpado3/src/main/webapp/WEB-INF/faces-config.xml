@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<!-- Mapeamento de converter para combo -->
+	<converter>
+		<display-name>SimpleEntityConverter</display-name>
+		<converter-id>SimpleEntityConverter</converter-id>
+		<converter-class>br.com.controller.util.SimpleEntityConverter</converter-class>
+	</converter>
+
+	<!-- Mapeamento de converter para combo -->
+	<converter>
+		<display-name>SimpleIndexConverter</display-name>
+		<converter-id>SimpleIndexConverter</converter-id>
+		<converter-class>br.com.controller.util.SimpleIndexConverter</converter-class>
+	</converter>
+
+
+	<navigation-rule>
+
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>mostraCheckbox</from-outcome>
+			<to-view-id>/testes/componentes/resultadoCheckbox.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>/paginas/usuario/cadastroUsuario.xhtml</from-outcome>
+			<to-view-id>/paginas/cliente/cadastroCliente.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>/paginas/cliente/cadastroCliente.xhtml</from-outcome>
+			<to-view-id>/paginas/usuario/cadastroUsuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+	</navigation-rule>
+
+	<!-- Navegação com WILDCARD -->
+	<!-- O asterisco fala que qualquer pagina com action oi -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroCliente</from-outcome>
+			<to-view-id>/paginas/cliente/cadastroCliente.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>incluirClientes</from-outcome>
+			<to-view-id>/paginas/cliente/cadastroCliente.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>editarCliente</from-outcome>
+			<to-view-id>/paginas/cliente/editarCliente.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisarClientes</from-outcome>
+			<to-view-id>/paginas/cliente/pesquisaCliente.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroUsuario</from-outcome>
+			<to-view-id>/paginas/usuario/cadastroUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisaUsuario</from-outcome>
+			<to-view-id>/paginas/usuario/pesquisaUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>editarUsuario</from-outcome>
+			<to-view-id>/paginas/usuario/editarUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizarUsuario</from-outcome>
+			<to-view-id>/paginas/usuario/visualizarUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroEstado</from-outcome>
+			<to-view-id>/paginas/estado/cadastroEstado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisaEstado</from-outcome>
+			<to-view-id>/paginas/estado/pesquisaEstado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisaEstadoVoltar</from-outcome>
+			<to-view-id>/paginas/estado/pesquisaEstado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>editarEstado</from-outcome>
+			<to-view-id>/paginas/estado/editarEstado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizarEstado</from-outcome>
+			<to-view-id>/paginas/estado/visualizarEstado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizarMunicipio</from-outcome>
+			<to-view-id>/paginas/municipio/visualizarMunicipio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroEndereco</from-outcome>
+			<to-view-id>/paginas/endereco/cadastroEndereco.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisaEndereco</from-outcome>
+			<to-view-id>/paginas/endereco/pesquisaEndereco.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroMunicipio</from-outcome>
+			<to-view-id>/paginas/municipio/cadastroMunicipio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisaMunicipio</from-outcome>
+			<to-view-id>/paginas/municipio/pesquisaMunicipio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisaMunicipio</from-outcome>
+			<to-view-id>/paginas/municipio/editarMunicipio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>trocarlogin</from-outcome>
+			<to-view-id>/paginas/login/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/paginas/login/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>autenticacao_ok</from-outcome>
+			<to-view-id>/paginas/home.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>
