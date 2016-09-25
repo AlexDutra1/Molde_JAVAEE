@@ -144,7 +144,7 @@
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>visualizarEstado</from-outcome>
-			<to-view-id>/paginas/estado/visualizarEstado.xhtml</to-view-id>
+			<to-view-id>/paginas/estado/editarEstado.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

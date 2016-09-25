@@ -28,7 +28,8 @@
 					<p:outputLabel value="Nome do Estado"></p:outputLabel>
 					<br></br>
 					<p:inputText styleClass="form-control"
-						value="#{estadoController.formulario.estado.nome}"></p:inputText>
+					disabled="#{estadoController.habilitarEditar}"
+					value="#{estadoController.formulario.estado.nome}"></p:inputText>
 					<br></br>
 				</div>
 
@@ -36,12 +37,16 @@
 					<p:outputLabel value="Sigla do Estado"></p:outputLabel>
 					<br></br>
 					<p:inputText styleClass="form-control" id="inputSigla"
-						value="#{estadoController.formulario.estado.sigla}"></p:inputText>
+					disabled="#{estadoController.habilitarEditar}"
+					value="#{estadoController.formulario.estado.sigla}"></p:inputText>
 				</div>
 				
 				<div class="col-md-12 form-group">
-					<p:commandButton update="formEditarEstado"  value="cancelar" action="#{estadoController.voltar}"/>
-					<p:commandButton update="formEditarEstado"  value="alterar" actionListener="#{estadoController.acaoAposCadastrar}"/>
+					<p:commandButton update="formEditarEstado"  
+					value="cancelar" action="#{estadoController.voltar}"/>
+					<p:commandButton update="formEditarEstado"  
+					rendered="#{estadoController.esconderBotoes}" 
+					value="alterar" actionListener="#{estadoController.acaoAposCadastrar}"/>
 				</div>
 			
 				</ui:define>

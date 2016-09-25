@@ -26,7 +26,8 @@ public class EstadoController implements Serializable {
 	@Inject
 	private EstadoFormulario formulario;
 	
-	private boolean teste=false;
+	private boolean habilitarEditar=false;
+	private boolean esconderBotoes=true;
 
 	@PostConstruct
 	public void init() {
@@ -79,6 +80,12 @@ public class EstadoController implements Serializable {
 
 	public String preparaEdicao(Estado estadoEditar) {
 
+		//Habilita campo para edição
+		this.habilitarEditar=false;
+		
+		//Exibe botão Alterar
+		this.esconderBotoes=true;
+				
 		this.formulario.setEstado(estadoEditar);
 
 		return "editarEstado";
@@ -88,7 +95,11 @@ public class EstadoController implements Serializable {
 
 		this.formulario.setEstado(estadoVisualizar);
 
-		this.teste=true;
+		//Esconde botão Alterar
+		this.esconderBotoes=false;		
+		
+		//Desabilita campo para edição
+		this.habilitarEditar=true;
 		
 		return "visualizarEstado";
 	}
@@ -101,6 +112,7 @@ public class EstadoController implements Serializable {
 	//FALTA ATUALIZAR PAGINA
 	public String voltar() {
 		
+		this.formulario.setEstado(new Estado());
 		RequestContext.getCurrentInstance().update("formPesquisaEstado");
 		
 		return "pesquisaEstado.xhtml";
@@ -124,12 +136,21 @@ public class EstadoController implements Serializable {
 		this.service = service;
 	}
 
-	public boolean isTeste() {
-		return teste;
+	public boolean isHabilitarEditar() {
+		return habilitarEditar;
 	}
 
-	public void setTeste(boolean teste) {
-		this.teste = teste;
+	public void setHabilitarEditar(boolean habilitarEditar) {
+		this.habilitarEditar = habilitarEditar;
 	}
+
+	public boolean isEsconderBotoes() {
+		return esconderBotoes;
+	}
+
+	public void setEsconderBotoes(boolean esconderBotoes) {
+		this.esconderBotoes = esconderBotoes;
+	}
+
 
 }
