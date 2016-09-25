@@ -25,6 +25,8 @@ public class EstadoController implements Serializable {
 
 	@Inject
 	private EstadoFormulario formulario;
+	
+	private boolean teste=false;
 
 	@PostConstruct
 	public void init() {
@@ -86,6 +88,8 @@ public class EstadoController implements Serializable {
 
 		this.formulario.setEstado(estadoVisualizar);
 
+		this.teste=true;
+		
 		return "visualizarEstado";
 	}
 
@@ -118,6 +122,14 @@ public class EstadoController implements Serializable {
 
 	public void setService(EstadoService service) {
 		this.service = service;
+	}
+
+	public boolean isTeste() {
+		return teste;
+	}
+
+	public void setTeste(boolean teste) {
+		this.teste = teste;
 	}
 
 }

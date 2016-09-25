@@ -156,14 +156,19 @@
 					</p:column>
 					
 					<p:column headerText="AÇÕES" style="text-align: center;">
-						<p:commandLink action="#{municipioController.preparaEdicao(municipio)}" ajax="false" title="Editar" styleClass="img-link">
+						<p:commandLink action="#{enderecoController.preparaEdicao(endereco)}" ajax="false" title="Editar" styleClass="img-link">
 								<p:graphicImage
-								value="/resources/img/editar.png" width="08%" height="30%"/>
+								value="/resources/img/editar.png" width="30%" height="30%"/>
 						</p:commandLink>
 						
-						<p:commandLink action="#{municipioController.excluirRegistro(municipio)}" ajax="false" title="Excluir" styleClass="img-link">
+						<p:commandLink action="#{enderecoController.excluirRegistro(endereco)}" ajax="false" title="Excluir" styleClass="img-link">
 								<p:graphicImage 
-								value="/resources/img/excluir.png" width="08%" height="30%"/>
+								value="/resources/img/excluir.png" width="30%" height="30%"/>
+						</p:commandLink>
+						
+						<p:commandLink action="#{enderecoController.visualizar(endereco)}" ajax="false" title="Visualizar" styleClass="img-link">
+								<p:graphicImage 
+								value="/resources/img/visualizar.jpg" width="30%" height="30%"/>
 						</p:commandLink>
 					</p:column>
 						

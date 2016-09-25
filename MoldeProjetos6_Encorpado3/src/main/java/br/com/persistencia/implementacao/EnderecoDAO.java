@@ -44,6 +44,19 @@ private EntityManager manager;
 		
 	}
 	
+	//EXCLUI ENDERECO
+		public void excluir(Endereco enderecoExcluir) {
+			
+			EntityTransaction trx = this.manager.getTransaction();
+			trx.begin();
+			
+			enderecoExcluir=manager.merge(enderecoExcluir);
+			manager.remove(enderecoExcluir);
+			
+			trx.commit();
+			
+		}
+	
 	@SuppressWarnings("unchecked")
 	public List<Endereco> consultarTodosClientesDAO(){
 		

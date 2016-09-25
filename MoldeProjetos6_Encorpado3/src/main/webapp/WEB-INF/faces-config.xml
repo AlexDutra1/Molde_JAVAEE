@@ -173,6 +173,23 @@
 			<to-view-id>/paginas/endereco/pesquisaEndereco.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizarEndereco</from-outcome>
+			<to-view-id>/paginas/endereco/visualizarEndereco.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>editarEndereco</from-outcome>
+			<to-view-id>/paginas/endereco/editarEndereco.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 
 	<navigation-rule>
 		<from-view-id>*</from-view-id>

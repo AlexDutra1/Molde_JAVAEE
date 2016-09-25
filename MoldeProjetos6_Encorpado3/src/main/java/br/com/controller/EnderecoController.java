@@ -98,7 +98,27 @@ public class EnderecoController  implements Serializable {
 	*/
 		
 	}
+	
+	public String preparaEdicao(Endereco enderecoEditar) {
 
+		this.formulario.setEndereco(enderecoEditar);
+
+		return "editarEndereco";
+	}
+
+
+	public String visualizar(Endereco enderecoVisualizar) {
+
+		this.formulario.setEndereco(enderecoVisualizar);
+
+		return "visualizarEndereco";
+	}
+
+	public void excluir(Endereco enderecoExcluir) {
+		this.service.getNegocios().getDao().excluir(enderecoExcluir);
+	}
+	
+	//GETTS AND SETTERS
 	public EnderecoService getService() {
 		return service;
 	}
