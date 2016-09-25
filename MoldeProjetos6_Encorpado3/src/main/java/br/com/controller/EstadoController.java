@@ -5,6 +5,10 @@ import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.application.Application;
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -29,6 +33,12 @@ public class EstadoController implements Serializable {
 	private boolean habilitarEditar=false;
 	private boolean esconderBotoes=true;
 
+	
+	private String titulo_pagina;
+	
+	
+	
+	
 	@PostConstruct
 	public void init() {
 		this.formulario.setTodosEstados(this.service.getNegocios().getDao()
@@ -80,6 +90,9 @@ public class EstadoController implements Serializable {
 
 	public String preparaEdicao(Estado estadoEditar) {
 
+		//Insere texto no cabeçalho
+		titulo_pagina=EstadoFormulario.EDICAO_ESTADO;
+		
 		//Habilita campo para edição
 		this.habilitarEditar=false;
 		
@@ -94,7 +107,10 @@ public class EstadoController implements Serializable {
 	public String visualizar(Estado estadoVisualizar) {
 
 		this.formulario.setEstado(estadoVisualizar);
-
+		
+		//Insere texto no cabeçalho
+		titulo_pagina=EstadoFormulario.VISUALIZACAO_ESTADO;
+		
 		//Esconde botão Alterar
 		this.esconderBotoes=false;		
 		
@@ -115,7 +131,20 @@ public class EstadoController implements Serializable {
 		this.formulario.setEstado(new Estado());
 		RequestContext.getCurrentInstance().update("formPesquisaEstado");
 		
+		refresh();
+		
 		return "pesquisaEstado.xhtml";
+	}
+	
+	//NAO ESTA SENDO USADO O METODO ABAIXO.MAS NO FUTURO ELE PODE SER UTIL
+	//Atualiza a pagina
+	public void refresh() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Application application = context.getApplication();
+		ViewHandler viewHandler = application.getViewHandler();
+		UIViewRoot viewRoot = viewHandler.createView(context, context.getViewRoot().getViewId());
+		context.setViewRoot(viewRoot);
+		context.renderResponse();
 	}
 
 	// GETTS AND SETTERS
@@ -150,6 +179,14 @@ public class EstadoController implements Serializable {
 
 	public void setEsconderBotoes(boolean esconderBotoes) {
 		this.esconderBotoes = esconderBotoes;
+	}
+
+	public String getTitulo_pagina() {
+		return titulo_pagina;
+	}
+
+	public void setTitulo_pagina(String titulo_pagina) {
+		this.titulo_pagina = titulo_pagina;
 	}
 
 

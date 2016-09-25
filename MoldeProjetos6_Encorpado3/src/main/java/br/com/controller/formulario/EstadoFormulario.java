@@ -21,8 +21,9 @@ public class EstadoFormulario implements Serializable {
 	
 	private List<Estado> todosEstados;
 
-	
-	
+	//CONSTANTES
+	public static final String EDICAO_ESTADO="Edição do Estado";
+	public static final String VISUALIZACAO_ESTADO="Visualização do Estado";
 	
 	//GETTS AND SETTERS
 	public Estado getEstado() {
